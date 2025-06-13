@@ -35,7 +35,7 @@ internal class ControlSystem : MonoBehaviour
         transform.eulerAngles = new Vector3(0, angle, 0);
     }
     [Header("基本數值")]
-    [SerializeField, Header("移動速度"), Range(0, 10)]
+    [SerializeField, Range(0, 10)]
     private float moveSpeed = 3.5f;
 
     [Header("元件")]
@@ -44,5 +44,5 @@ internal class ControlSystem : MonoBehaviour
 
     [SerializeField]
     private Animator ani;
-    
+
 }
