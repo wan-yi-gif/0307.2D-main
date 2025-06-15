@@ -25,6 +25,15 @@ internal class ControlSystem : MonoBehaviour
 
     [SerializeField]
     private Vector3 checkGroundOffset;
+
+    [SerializeField]
+    private LayerMask LayerGround = 1 << 3;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1f, 0.3f, 0.3f, 0.5f);
+        Gizmos.DrawCube(transform.position + checkGroundOffset, checkGroundSize);
+    }
     
     // 喚醒事件：播放後會第一個執行的事件 (執行一次)
     // 適合用來做初始化，例如：英雄聯盟一開始的玩家金幣
@@ -56,6 +65,9 @@ internal class ControlSystem : MonoBehaviour
         ani.SetFloat("移動數值" , Mathf.Abs(h));
         // 動畫的設定浮點數("參數的名稱"，數值)
         // Mathf.Abs() 取絕對值
+        
+        bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
+        ani.SetBool("開關跳躍", !isGrounded);
 
         if (Mathf.Abs(h) < 0.1f) return;
         
@@ -65,7 +77,7 @@ internal class ControlSystem : MonoBehaviour
         
         rig.linearVelocity = new Vector2(moveSpeed * h , rig.linearVelocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("跳躍");
             rig.linearVelocity = new Vector2(0, jump);

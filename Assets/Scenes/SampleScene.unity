@@ -816,7 +816,7 @@ GameObject:
   - component: {fileID: 861560022}
   - component: {fileID: 861560021}
   - component: {fileID: 861560020}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: "\u62DA\u63A5\u5730\u5716_\u5730\u677F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5689,8 +5689,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
+  jump: 5
   rig: {fileID: 1261713623}
   ani: {fileID: 1261713618}
+  checkGroundSize: {x: 0.4, y: 0.12, z: 1}
+  checkGroundOffset: {x: 0, y: -0.82, z: 0}
+  LayerGround:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!50 &1261713623
 Rigidbody2D:
   serializedVersion: 5
