@@ -4,6 +4,28 @@ using UnityEngine;
 internal class ControlSystem : MonoBehaviour
 
 {
+
+    [Header("基本數值")]
+    [SerializeField , Range(0 , 10)]
+    private float moveSpeed = 3.5f;
+
+    [SerializeField , Range(0 , 10)]
+    private float jump = 5;
+
+    [Header("元件")]
+    [SerializeField]
+    private Rigidbody2D rig;
+
+    [SerializeField]
+    private Animator ani;
+
+    [Header("檢查地板資料")]
+    [SerializeField]
+    private Vector3 checkGroundSize = Vector3.one;
+
+    [SerializeField]
+    private Vector3 checkGroundOffset;
+    
     // 喚醒事件：播放後會第一個執行的事件 (執行一次)
     // 適合用來做初始化，例如：英雄聯盟一開始的玩家金幣
     private void Awake()
@@ -49,18 +71,5 @@ internal class ControlSystem : MonoBehaviour
             rig.linearVelocity = new Vector2(0, jump);
             // 如果按下空白鍵就跳躍
         }
-        
-        
     }
-    [Header("基本數值")]
-    [SerializeField, Range(0, 10)]
-    private float moveSpeed = 3.5f;
-
-    [Header("元件")]
-    [SerializeField]
-    private Rigidbody2D rig;
-
-    [SerializeField]
-    private Animator ani;
-
 }
