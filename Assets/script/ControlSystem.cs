@@ -1,39 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 internal class ControlSystem : MonoBehaviour
 
 {
-
-    [Header("基本數值")]
-    [SerializeField , Range(0 , 10)]
-    private float moveSpeed = 3.5f;
-
-    [SerializeField , Range(0 , 10)]
-    private float jump = 5;
-
-    [Header("元件")]
-    [SerializeField]
-    private Rigidbody2D rig;
-
-    [SerializeField]
-    private Animator ani;
-
-    [Header("檢查地板資料")]
-    [SerializeField]
-    private Vector3 checkGroundSize = Vector3.one;
-
-    [SerializeField]
-    private Vector3 checkGroundOffset;
-
-    [SerializeField]
-    private LayerMask LayerGround = 1 << 3;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1f, 0.3f, 0.3f, 0.5f);
-        Gizmos.DrawCube(transform.position + checkGroundOffset, checkGroundSize);
-    }
     
     // 喚醒事件：播放後會第一個執行的事件 (執行一次)
     // 適合用來做初始化，例如：英雄聯盟一開始的玩家金幣
