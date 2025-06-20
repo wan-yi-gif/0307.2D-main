@@ -5690,9 +5690,9 @@ GameObject:
   - component: {fileID: 1261713620}
   - component: {fileID: 1261713619}
   - component: {fileID: 1261713618}
-  - component: {fileID: 1261713621}
   - component: {fileID: 1261713623}
   - component: {fileID: 1261713624}
+  - component: {fileID: 1261713625}
   m_Layer: 0
   m_Name: "\u9A0E\u58EB"
   m_TagString: Untagged
@@ -5792,27 +5792,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1261713621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261713617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff8a328a06d1b44daa43d75d0da58ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 3
-  jump: 5
-  rig: {fileID: 1261713623}
-  ani: {fileID: 1261713618}
-  checkGroundSize: {x: 0.4, y: 0.12, z: 1}
-  checkGroundOffset: {x: 0, y: -0.82, z: 0}
-  LayerGround:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!50 &1261713623
 Rigidbody2D:
   serializedVersion: 5
@@ -5877,6 +5856,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.06467056}
   m_Size: {x: 0.75, y: 1.4293411}
   m_Direction: 0
+--- !u!114 &1261713625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261713617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 665a872320a0bd54899dd112d7791f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1336554975
 PrefabInstance:
   m_ObjectHideFlags: 0

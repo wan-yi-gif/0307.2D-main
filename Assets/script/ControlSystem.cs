@@ -68,12 +68,6 @@ internal class ControlSystem : MonoBehaviour
         
         bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
         ani.SetBool("開關跳躍", !isGrounded);
-
-        if (Mathf.Abs(h) < 0.1f) return;
-        
-        float angle = h > 0 ? 0 : 180;
-        
-        transform.eulerAngles = new Vector3(0 , angle , 0);
         
         rig.linearVelocity = new Vector2(moveSpeed * h , rig.linearVelocity.y);
 
@@ -83,5 +77,11 @@ internal class ControlSystem : MonoBehaviour
             rig.linearVelocity = new Vector2(0, jump);
             // 如果按下空白鍵就跳躍
         }
+
+        if (Mathf.Abs(h) < 0.1f) return;
+
+        float angle = h > 0 ? 0 : 180;
+
+        transform.eulerAngles = new Vector3(0 , angle , 0);
     }
 }
