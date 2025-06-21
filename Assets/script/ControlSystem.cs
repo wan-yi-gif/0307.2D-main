@@ -2,55 +2,45 @@
 using UnityEngine;
 
 internal class ControlSystem : MonoBehaviour
-
 {
-    // 喚醒事件：播放後會第一個執行的事件 (執行一次)
-    // 適合用來做初始化，例如：英雄聯盟一開始的玩家金幣
+    public float jumpForce = 10f;
+    public float moveSpeed = 5f;
+    public Rigidbody2D rig;
+    public Animator ani;
+    public Vector3 checkGroundOffset;
+    public Vector2 checkGroundSize;
+    public LayerMask LayerGround;
+
     private void Awake()
     {
-        // 輸出訊息到 Untiy 的 Console 面板
         Debug.Log(":D");
     }
 
-    // 開始事件：喚醒事件後執行一次
     private void Start()
     {
         Debug.Log("<color=green>開始事件</color>");
     }
 
-    // 更新事件：開始事件後執行，每秒約 60 次
-    private void Update(float jump)
+    private void Update()
     {
         float h = Input.GetAxis("Horizontal");
-        // Unity API (Unity 倉庫，遊戲功能)
-        // 剛體的加速度 = 二維向量
-        // Horizontal 左、A ， 右、D
-        // 左：-1
-        // 右：+1
-        // 沒按：0
-        Debug.Log(h);
-        rig.linearVelocity = new Vector2(moveSpeed * h , 0);
-        
-        ani.SetFloat("移動數值" , Mathf.Abs(h));
-        // 動畫的設定浮點數("參數的名稱"，數值)
-        // Mathf.Abs() 取絕對值
-        
+
+        rig.linearVelocity = new Vector2(moveSpeed * h, rig.linearVelocity.y);
+
+        ani.SetFloat("移動數值", Mathf.Abs(h));
+
         bool isGrounded = Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
         ani.SetBool("開關跳躍", !isGrounded);
-        
-        rig.linearVelocity = new Vector2(moveSpeed * h , rig.linearVelocity.y);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("跳躍");
-            rig.linearVelocity = new Vector2(0, jump);
-            // 如果按下空白鍵就跳躍
+            rig.linearVelocity = new Vector2(rig.linearVelocity.x, jumpForce);
         }
 
         if (Mathf.Abs(h) < 0.1f) return;
 
         float angle = h > 0 ? 0 : 180;
-
-        transform.eulerAngles = new Vector3(0 , angle , 0);
+        transform.eulerAngles = new Vector3(0, angle, 0);
     }
 }

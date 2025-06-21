@@ -49,7 +49,7 @@ namespace Wanyi
         public float moveSpeed { get; private set; } = 3.5f;
 
         [SerializeField, Range(0, 10)]
-        private float jump = 7;
+        private float jump = 5;
 
         // [Header("元件")]
         // [SerializeField]

@@ -5868,7 +5868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 665a872320a0bd54899dd112d7791f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3.5
   jump: 3
   checkGroundSize: {x: 0.6, y: 0.1, z: 1}
   checkGroundOffset: {x: 0, y: -0.8, z: 0}
