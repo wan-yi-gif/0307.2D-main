@@ -27,6 +27,10 @@ namespace Wanyi
         public override void Update()
         {
             base.Update();
+
+            float h = Input.GetAxis("Horizontal");
+
+            if (Mathf.Abs(h) > 0) stateMachine.SwitchState(player.playerWalk);
         }
     }
 

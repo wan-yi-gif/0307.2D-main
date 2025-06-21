@@ -4,7 +4,6 @@ using UnityEngine;
 internal class ControlSystem : MonoBehaviour
 
 {
-    
     // 喚醒事件：播放後會第一個執行的事件 (執行一次)
     // 適合用來做初始化，例如：英雄聯盟一開始的玩家金幣
     private void Awake()
@@ -20,7 +19,7 @@ internal class ControlSystem : MonoBehaviour
     }
 
     // 更新事件：開始事件後執行，每秒約 60 次
-    private void Update()
+    private void Update(float jump)
     {
         float h = Input.GetAxis("Horizontal");
         // Unity API (Unity 倉庫，遊戲功能)
