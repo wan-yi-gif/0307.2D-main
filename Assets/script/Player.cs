@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Wanyi
 {
@@ -40,6 +41,23 @@ namespace Wanyi
         private void Update()
         {
             stateMachine.UpdateState();
+
+        }
+
+        /// <summary>
+        /// 翻面
+        /// </summary>
+        /// <param name="h">玩家的水平值 (移動)</param>
+        public void Flip()
+        {
+            if (Mathf.Abs(h) < 0.1f) return;
+            float angle = h > 0 ? 0 : 180;
+            transform.eulerAngles = new Vector3(0, angle, 0);
+        }
+
+        internal void Flip(float h)
+        {
+            throw new NotImplementedException();
         }
 
         #region 變數
@@ -57,6 +75,7 @@ namespace Wanyi
 
         // [SerializeField]
         public Animator ani { get; private set; }
+        public int h { get; private set; }
 
         [Header("檢查地板資料")]
         [SerializeField]

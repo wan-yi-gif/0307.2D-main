@@ -23,7 +23,7 @@ namespace Wanyi
         }
         public virtual void Update()
         {
-            Debug.Log($"<color=#777>進入 <{name}> 狀態</color>");
+            // Debug.Log($"<color=#777>進入 <{name}> 狀態</color>");
         }
         public virtual void Exit()
         {

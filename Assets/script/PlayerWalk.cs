@@ -36,6 +36,10 @@ namespace Wanyi
             player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
 
             player.ani.SetFloat("移動數值", Mathf.Abs(h));
+
+            player.Flip(h);
+
+            if (h == 0) stateMachine.SwitchState(player.playerIdle);
         }
 
     }
