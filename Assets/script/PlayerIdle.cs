@@ -7,7 +7,7 @@ namespace Wanyi
     /// </summary>
     /// 玩家待機類別 繼承 狀態類別
     /// 建構子也要實作
-    public class PlayerIdle : State
+    public class PlayerIdle : PlayerGround
     {
         public PlayerIdle(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
         {

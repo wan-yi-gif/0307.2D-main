@@ -60,6 +60,11 @@ namespace Wanyi
             throw new NotImplementedException();
         }
 
+        public bool IsGround()
+        {
+            return Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
+        }
+
         #region 變數
         [Header("基本數值")]
 
@@ -67,7 +72,7 @@ namespace Wanyi
         public float moveSpeed { get; private set; } = 3.5f;
 
         [SerializeField, Range(0, 10)]
-        private float jump = 5;
+        public float jump { get; private set; } = 5;
 
         // [Header("元件")]
         // [SerializeField]
