@@ -14,6 +14,10 @@ namespace Wanyi
         public override void Enter()
         {
             base.Enter();
+
+            player.ani.SetBool("開關跳躍", true);
+
+            player.rig.linearVelocity = new Vector2(player.rig.linearVelocityX, player.jump);
         }
 
         public virtual void Exit()

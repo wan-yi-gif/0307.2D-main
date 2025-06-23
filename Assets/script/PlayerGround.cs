@@ -16,6 +16,11 @@ public class PlayerGround : State
     public override void Update()
     {
         base.Update();
+
+        if(player.IsGround() && Input.GetKeyDown(KeyCode.Space))
+        {
+
+        }
     }
 
     public override void Exit()
