@@ -14,15 +14,22 @@
         public override void Enter()
         {
             base.Enter();
+            player.ani.SetFloat("地心引力", -1);
         }
 
-        public virtual void Exit()
+        public override void Exit()
         {
             base.Exit();
+            player.ani.SetBool("開關跳躍", false);
         }
-        public virtual void Update()
+        public override void Update()
         {
             base.Update();
+            float h = Input.GetAxis("Horizontal");
+            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            player.Flip(h);
+
+            if (player.IsGround()) stateMachine.SwitchState(player.playerIdle);
         }
     }
 }

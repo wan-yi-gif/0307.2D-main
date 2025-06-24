@@ -16,17 +16,22 @@ namespace Wanyi
             base.Enter();
 
             player.ani.SetBool("開關跳躍", true);
+            player.ani.SetFloat("地心引力", 1);
 
             player.rig.linearVelocity = new Vector2(player.rig.linearVelocityX, player.jump);
         }
 
-        public virtual void Exit()
+        public override void Exit()
         {
             base.Exit();
         }
-        public virtual void Update()
+        public override void Update()
         {
             base.Update();
+
+            float h = Input.GetAxis("Horizontal");
+            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            if (player.rig.linearVelocityY < 0) stateMachine.SwitchState(player.playerFall);
         }
     }
 }
