@@ -5865,6 +5865,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <moveSpeed>k__BackingField: 5
   <jump>k__BackingField: 7.5
+  <attackBreakTime>k__BackingField: 1
   checkGroundSize: {x: 0.6, y: 0.1, z: 1}
   checkGroundOffset: {x: 0, y: -0.8, z: 0}
   LayerGround:
