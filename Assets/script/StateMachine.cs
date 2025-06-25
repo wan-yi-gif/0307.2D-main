@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Wanyi
 {
@@ -33,6 +34,11 @@ namespace Wanyi
             currenState.Exit();
             currenState = newState;
             currenState.Enter();
+        }
+
+        internal void SwitchState(object playerAttack)
+        {
+            throw new NotImplementedException();
         }
     }
 }

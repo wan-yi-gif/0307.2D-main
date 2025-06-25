@@ -15,6 +15,7 @@ namespace Wanyi
         public PlayerWalk playerWalk { get; private set; }
         public PlayerJump playerJump { get; private set; }
         public PlayerFall playerFall { get; private set; }
+        public PlayerAttack playerAttack { get; private set; }
 
         private void OnDrawGizmos()
         {
@@ -33,6 +34,7 @@ namespace Wanyi
             playerWalk = new PlayerWalk(this, stateMachine, "玩家走路");
             playerJump = new PlayerJump(this, stateMachine, "玩家跳躍");
             playerFall = new PlayerFall(this, stateMachine, "玩家落下");
+            playerAttack = new PlayerAttack(this, stateMachine, "玩家攻擊");
 
             stateMachine.Initialize(playerIdle);
             
@@ -68,11 +70,14 @@ namespace Wanyi
         #region 變數
         [Header("基本數值")]
 
-        [SerializeField, Range(0, 10)]
+        [field: SerializeField, Range(0, 10)]
         public float moveSpeed { get; private set; } = 3.5f;
 
-        [SerializeField, Range(0, 10)]
+        [field: SerializeField, Range(0, 10)]
         public float jump { get; private set; } = 5;
+
+        [field: SerializeField, Range(0, 5)]
+        public float attackBreakTime { get; private set; } = 1;
 
         // [Header("元件")]
         // [SerializeField]

@@ -9,6 +9,7 @@ namespace Wanyi
 
         protected Player player;
         protected StateMachine stateMachine;
+        protected float timer;
         
         public State(Player _player, StateMachine _stateMachine, string _name)
         {
@@ -20,10 +21,13 @@ namespace Wanyi
         public virtual void Enter()
         {
             Debug.Log($"<color=#6f6>進入 <{name}> 狀態</color>");
+
+            timer = 0;
         }
         public virtual void Update()
         {
             // Debug.Log($"<color=#777>進入 <{name}> 狀態</color>");
+            timer += Time.deltaTime;
         }
         public virtual void Exit()
         {

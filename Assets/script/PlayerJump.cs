@@ -31,6 +31,7 @@ namespace Wanyi
 
             float h = Input.GetAxis("Horizontal");
             player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            player.Flip(h);
             
             if (player.rig.linearVelocityY < 0) stateMachine.SwitchState(player.playerFall);
         }
