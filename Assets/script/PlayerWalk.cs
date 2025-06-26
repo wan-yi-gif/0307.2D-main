@@ -17,31 +17,30 @@ namespace Wanyi
         {
             base.Enter();
         }
-        
-        public virtual void Exit()
+
+        public override void Exit()
         {
             base.Exit();
         }
-        public virtual void Update()
+
+        public override void Update()
         {
             base.Update();
 
             float h = Input.GetAxis("Horizontal");
-            // Unity API (Unity 倉庫，遊戲功能)
-            // 剛體的加速度 = 二維向量
-            // Horizontal 左、A ， 右、D
-            // 左：-1
-            // 右：+1
-            // 沒按：0
-            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+
+            // 修正：使用 Unity 正確的剛體 velocity 屬性
+            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocity.y);
 
             player.ani.SetFloat("移動數值", Mathf.Abs(h));
 
             player.Flip(h);
 
-            if (h == 0) stateMachine.SwitchState(player.playerIdle);
+            if (Mathf.Abs(h) < 0.01f)
+            {
+                stateMachine.SwitchState(player.playerIdle);
+            }
         }
-
     }
-
 }
+

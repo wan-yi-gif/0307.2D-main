@@ -50,16 +50,11 @@ namespace Wanyi
         /// 翻面
         /// </summary>
         /// <param name="h">玩家的水平值 (移動)</param>
-        public void Flip()
+        public void Flip(float h)
         {
             if (Mathf.Abs(h) < 0.1f) return;
             float angle = h > 0 ? 0 : 180;
             transform.eulerAngles = new Vector3(0, angle, 0);
-        }
-
-        internal void Flip(float h)
-        {
-            throw new NotImplementedException();
         }
 
         public bool IsGround()

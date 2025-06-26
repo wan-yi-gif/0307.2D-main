@@ -5870,7 +5870,7 @@ MonoBehaviour:
   checkGroundOffset: {x: 0, y: -0.8, z: 0}
   LayerGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 40
 --- !u!1001 &1336554975
 PrefabInstance:
   m_ObjectHideFlags: 0
