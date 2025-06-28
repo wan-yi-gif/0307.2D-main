@@ -40,5 +40,10 @@ namespace Wanyi
         {
             throw new NotImplementedException();
         }
+
+        internal void Initialize(EnemyIdle enemyIdle)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

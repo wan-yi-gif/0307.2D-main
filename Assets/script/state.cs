@@ -5,9 +5,7 @@ namespace Wanyi
 {
     public class State
     {
-        private string name;
-
-        protected Player player;
+        protected string name;
         protected StateMachine stateMachine;
         protected float timer;
         

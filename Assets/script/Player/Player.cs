@@ -74,6 +74,9 @@ namespace Wanyi
         [field: SerializeField, Range(0, 5)]
         public float attackBreakTime { get; private set; } = 1;
 
+        [field: SerializeField, Range(0, 2)]
+        public float[] attackAnimationTime { get; private set; }
+
         // [Header("元件")]
         // [SerializeField]
         public Rigidbody2D rig { get; private set; }

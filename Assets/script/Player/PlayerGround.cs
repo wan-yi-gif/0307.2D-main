@@ -4,7 +4,7 @@ using Wanyi;
 namespace Wanyi
 {
 
-    public class PlayerGround : State
+    public class PlayerGround : PlayerState
     {
         public PlayerGround(Player _player, StateMachine _stateMachine, string _name) : base(_player, _stateMachine, _name)
         {
