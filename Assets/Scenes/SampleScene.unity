@@ -5685,6 +5685,8 @@ GameObject:
   - component: {fileID: 1162879903}
   - component: {fileID: 1162879902}
   - component: {fileID: 1162879901}
+  - component: {fileID: 1162879905}
+  - component: {fileID: 1162879904}
   m_Layer: 0
   m_Name: "\u6575\u4EBA"
   m_TagString: Untagged
@@ -5784,6 +5786,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &1162879904
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162879900}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: -1.1004337}
+  m_Size: {x: 1, y: 1.7524993}
+  m_Direction: 0
+--- !u!50 &1162879905
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1162879900}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &1261713617
 GameObject:
   m_ObjectHideFlags: 0
@@ -6840,7 +6906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7056381960711992490, guid: a6c8d13111ddaf04390e5c31d6acf965, type: 3}
       propertyPath: m_Name
-      value: "\u63D2\u5716_0"
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 7582304538655128423, guid: a6c8d13111ddaf04390e5c31d6acf965, type: 3}
       propertyPath: m_Color.b
@@ -6956,8 +7022,8 @@ SceneRoots:
   - {fileID: 1455745992}
   - {fileID: 2070134768}
   - {fileID: 1261713620}
+  - {fileID: 1162879903}
   - {fileID: 5641748912823885915}
   - {fileID: 506665304}
   - {fileID: 1957886219}
   - {fileID: 1013871469}
-  - {fileID: 1162879903}
