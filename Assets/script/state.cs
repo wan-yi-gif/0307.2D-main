@@ -8,7 +8,6 @@ namespace Wanyi
         protected string name;
         protected StateMachine stateMachine;
         protected float timer;
-        
         public State(Player _player, StateMachine _stateMachine, string _name)
         {
             player = _player;

@@ -13,6 +13,7 @@ namespace Wanyi
             stateMachine = _stateMachine;
             name = _name;
         }
+
     }
 }
 
