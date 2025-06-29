@@ -26,7 +26,8 @@
         {
             base.Update();
             float h = Input.GetAxis("Horizontal");
-            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            // player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            player.SetVelocity(player.moveSpeed * h, player.rig.linearVelocityY);
             player.Flip(h);
 
             if (player.IsGround()) stateMachine.SwitchState(player.playerIdle);

@@ -6,7 +6,7 @@ namespace Wanyi
     /// <summary>
     /// 玩家腳本：玩家的基本資料與行為
     /// </summary>
-    public class Player : MonoBehaviour
+    public class Player : Character
     {
         private StateMachine stateMachine;
         // 唯獨屬性 : 允許外部取得但不能修改
@@ -23,11 +23,14 @@ namespace Wanyi
             Gizmos.DrawCube(transform.position + checkGroundOffset, checkGroundSize);
         }
 
-        private void Awake()
+        protected override void Awake()
         {
-            rig = GetComponent<Rigidbody2D>();
+
+            base.Awake();
+
+            // rig = GetComponent<Rigidbody2D>();
             // 取得此物件身上的2D剛體存放到rig變數
-            ani = GetComponent<Animator>();
+            // ani = GetComponent<Animator>();
 
             stateMachine = new StateMachine();
             playerIdle = new PlayerIdle(this, stateMachine, "玩家待機");
@@ -46,16 +49,7 @@ namespace Wanyi
 
         }
 
-        /// <summary>
-        /// 翻面
-        /// </summary>
-        /// <param name="h">玩家的水平值 (移動)</param>
-        public void Flip(float h)
-        {
-            if (Mathf.Abs(h) < 0.1f) return;
-            float angle = h > 0 ? 0 : 180;
-            transform.eulerAngles = new Vector3(0, angle, 0);
-        }
+        
 
         public bool IsGround()
         {
@@ -79,10 +73,10 @@ namespace Wanyi
 
         // [Header("元件")]
         // [SerializeField]
-        public Rigidbody2D rig { get; private set; }
+        // public Rigidbody2D rig { get; private set; }
 
         // [SerializeField]
-        public Animator ani { get; private set; }
+        // public Animator ani { get; private set; }
         public int h { get; private set; }
 
         [Header("檢查地板資料")]

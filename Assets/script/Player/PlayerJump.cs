@@ -18,7 +18,8 @@ namespace Wanyi
             player.ani.SetBool("開關跳躍", true);
             player.ani.SetFloat("地心引力", 1);
 
-            player.rig.linearVelocity = new Vector2(player.rig.linearVelocityX, player.jump);
+            // player.rig.linearVelocity = new Vector2(player.rig.linearVelocityX, player.jump);
+            player.SetVelocity(player.rig.linearVelocityX, player.jump);
         }
 
         public override void Exit()
@@ -30,7 +31,8 @@ namespace Wanyi
             base.Update();
 
             float h = Input.GetAxis("Horizontal");
-            player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+           // player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocityY);
+            player.SetVelocity(player.moveSpeed * h, player.rig.linearVelocityY);
             player.Flip(h);
             
             if (player.rig.linearVelocityY < 0) stateMachine.SwitchState(player.playerFall);

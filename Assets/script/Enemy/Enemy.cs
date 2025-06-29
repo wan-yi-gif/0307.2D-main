@@ -4,7 +4,7 @@ namespace Wanyi
 
 {
 
-    public class Enemy : MonoBehaviour
+    public class Enemy : Character
     {
         private StateMachine stateMachine;
 
@@ -16,8 +16,10 @@ namespace Wanyi
         public EnemyAttack enemyAttack { get; private set; }
         public EnemyDead enemyDead { get; private set; }
 
-        private void Awake()
+        protected override void Awake()
         {
+
+            base.Awake();
 
        
         stateMachine = new StateMachine();
