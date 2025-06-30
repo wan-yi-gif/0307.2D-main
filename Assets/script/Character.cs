@@ -18,11 +18,12 @@ namespace Wanyi
         /// <summary>
         /// 設定加速度
         /// </summary>
+        /// <param name="direction">方向</param>
         /// <param name="x">X 軸加速度</param>
         /// <param name="y">Y 軸加速度</param>
-        public void SetVelocity(float x, float y)
+        public void SetVelocity(Vector3 direction)
         {
-            rig.linearVelocity = new Vector2(x, y);
+            rig.linearVelocity = direction;
         }
 
         /// <summary>

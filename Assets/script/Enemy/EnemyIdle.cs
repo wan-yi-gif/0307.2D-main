@@ -1,16 +1,34 @@
 ﻿using UnityEngine;
 using Wanyi;
 
-public class EnemyIdle
+public class EnemyIdle : EnemyState
 {
-    private Enemy enemy;
-    private StateMachine stateMachine;
-    private string v;
+    private float idleTime;
 
-    public EnemyIdle(Enemy enemy, StateMachine stateMachine, string v)
+
+    public EnemyIdle(Enemy _enemy, StateMachine _stateMachine, string _name) : base(_enemy, _stateMachine, _name)
     {
-        this.enemy = enemy;
-        this.stateMachine = stateMachine;
-        this.v = v;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+
+        enemy.ani.SetFloat("移動數值", 0);
+        enemy.SetVelocity(0, 0);
+
+        idleTime = Random.Range(enemy.idleTimeRange.x, enemy.idleTimeRange.y);
+        // Debug.Log($"隨機待機時間 : {idleTime}");
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (timer >= idleTime) stateMachine.SwitchState(enemy.enemyTravel);
     }
 }

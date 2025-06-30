@@ -45,5 +45,10 @@ namespace Wanyi
         {
             throw new NotImplementedException();
         }
+
+        internal void Update()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

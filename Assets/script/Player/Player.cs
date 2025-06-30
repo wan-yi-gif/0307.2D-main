@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Wanyi
 {
-    /// <summary>
+    /// <summary> 
     /// 玩家腳本：玩家的基本資料與行為
     /// </summary>
     public class Player : Character
@@ -40,7 +40,7 @@ namespace Wanyi
             playerAttack = new PlayerAttack(this, stateMachine, "玩家攻擊");
 
             stateMachine.Initialize(playerIdle);
-            
+
         }
 
         private void Update()
@@ -49,11 +49,21 @@ namespace Wanyi
 
         }
 
-        
+
 
         public bool IsGround()
         {
             return Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
+        }
+
+        internal void SetVelocity(float v, float linearVelocityY)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void SetVelocity(float v, object linearVelocityY)
+        {
+            throw new NotImplementedException();
         }
 
         #region 變數

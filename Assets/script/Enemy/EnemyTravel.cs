@@ -5,6 +5,8 @@ namespace Wanyi
 {
     public class EnemyTravel : EnemyState
     {
+
+        private float travelTime;
         public EnemyTravel(Enemy _enemy, StateMachine _stateMachine, string _name) : base(_enemy, _stateMachine, _name)
         {
         }
@@ -12,6 +14,8 @@ namespace Wanyi
         public override void Enter()
         {
             base.Enter();
+            travelTime = Random.Range(enemy.travelTimeRange.x, enemy.travelTimeRange.y);
+            enemy.ani.SetFloat("移動數值", 1);
         }
 
         public override void Exit()
@@ -22,6 +26,12 @@ namespace Wanyi
         public override void Update()
         {
             base.Update();
+            enemy.SetVelocity(enemy.transform.right * enemy.travelSpeed);
+
+            if (timer >= travelTime) stateMachine.SwitchState(enemy.enemyIdle);
+
+            if (enemy.IsWallInFront() || !enemy.IsGroundInFront())
+                enemy.Flip(enemy.transform.eulerAngles.y == 0 ? -1 : +1);
         }
     }
 
