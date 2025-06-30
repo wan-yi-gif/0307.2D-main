@@ -32,8 +32,12 @@ namespace Wanyi
 
             if (enemy.IsWallInFront() || !enemy.IsGroundInFront())
                 enemy.Flip(enemy.transform.eulerAngles.y == 0 ? -1 : +1);
+
+            if (enemy.IsWallInFront() || !enemy.IsGroundInFront()) return;
+
+            if(enemy.IsPlayerInFront()) stateMachine.SwitchState(enemy.enemyTrack);
         }
     }
-
 }
+
 

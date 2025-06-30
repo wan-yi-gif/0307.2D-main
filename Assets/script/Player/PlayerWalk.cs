@@ -30,8 +30,7 @@ namespace Wanyi
             float h = Input.GetAxis("Horizontal");
 
             // 修正：使用 Unity 正確的剛體 velocity 屬性
-            // player.rig.linearVelocity = new Vector2(player.moveSpeed * h, player.rig.linearVelocity.y);
-            player.SetVelocity(player.moveSpeed * h, player.rig.linearVelocityY);
+            player.SetVelocity(player.moveSpeed * h, player.rig.linearVelocity.y);
 
             player.ani.SetFloat("移動數值", Mathf.Abs(h));
 

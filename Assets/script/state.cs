@@ -23,7 +23,7 @@ namespace Wanyi
 
         public virtual void Enter()
         {
-            Debug.Log($"<color=#6f6>進入 <{name}> 狀態</color>");
+           
             timer = 0;
         }
 
@@ -34,7 +34,7 @@ namespace Wanyi
 
         public virtual void Exit()
         {
-            Debug.Log($"<color=#f66>離開 <{name}> 狀態</color>");
+            
         }
     }
 }

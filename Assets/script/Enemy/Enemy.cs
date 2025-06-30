@@ -11,10 +11,24 @@ namespace Wanyi
         #region 資料
         [field: SerializeField, Header("敵人資料"), Tooltip("敵人待機的時間範圍")]
         public Vector2 idleTimeRange { get; private set; } = new Vector2(1, 3);
+
         [field: SerializeField, Tooltip("敵人待機的時間範圍")]
         public Vector2 travelTimeRange { get; private set; } = new Vector2(3, 7);
+
         [field: SerializeField, Range(0, 3), Tooltip("敵人遊走的速度")]
         public float travelSpeed = 1.5f;
+
+        [field: SerializeField, Range(0, 5), Tooltip("敵人追蹤的速度")]
+        public float trackSpeed = 2.5f;
+
+        [field: SerializeField, Range(0, 6), Tooltip("敵人進入攻擊的距離")]
+        public float attackDistance = 2.5f;
+
+        [field: SerializeField, Range(0, 3), Tooltip("敵人攻擊時間")]
+        public float attackTime = -1;
+
+
+
 
         [Header("檢查前方是否有地板與牆壁")]
         [SerializeField]
@@ -66,13 +80,16 @@ namespace Wanyi
             Gizmos.DrawCube(transform.position + transform.TransformDirection(checkPlyerOffset), checkPlyerSize);
         }
 
+        public Transform traPlayer {  get; private set; }
+
         protected override void Awake()
         {
 
             base.Awake();
 
+            traPlayer = GameObject.Find("騎士").transform;
        
-        stateMachine = new StateMachine();
+            stateMachine = new StateMachine();
 
             enemyIdle = new EnemyIdle(this, stateMachine, "敵人待機");
             enemyTravel = new EnemyTravel(this, stateMachine, "敵人遊走");
@@ -105,9 +122,18 @@ namespace Wanyi
             return Physics2D.OverlapBox(transform.position + transform.TransformDirection(checkPlyerOffset), checkPlyerSize, 0, layerPlyer);
         }
 
-        internal void SetVelocity(int v1, int v2)
+        protected override void Damge(float damage)
         {
-            throw new NotImplementedException();
+            base.Damge(damage);
+        
+            if (hp <= 0) stateMachine.SwitchState(enemyDead);
+            
+        }
+
+        private Rigidbody2D rb;
+        internal void SetVelocity(Vector3 direction)
+        {
+            rb.linearVelocity = new Vector2(direction.x, rb.linearVelocity.y);
         }
     }
 }

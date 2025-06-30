@@ -1,16 +1,31 @@
 ﻿using UnityEngine;
 using Wanyi;
 
-public class EnemyAttack
+public class EnemyAttack : EnemyState
 {
-    private Enemy enemy;
-    private StateMachine stateMachine;
-    private string v;
-
-    public EnemyAttack(Enemy enemy, StateMachine stateMachine, string v)
+    public EnemyAttack(Enemy _enemy, StateMachine _stateMachine, string _name) : base(_enemy, _stateMachine, _name)
     {
-        this.enemy = enemy;
-        this.stateMachine = stateMachine;
-        this.v = v;
+        enemy = _enemy;
+        stateMachine = _stateMachine;
+        name = _name;
+    }
+
+    public override void Enter()
+    {
+        base.Enter();
+        enemy.ani.SetTrigger("觸發攻擊");
+        enemy.ani.SetFloat("移動數值", 0);
+        enemy.SetVelocity(0, 0);
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (timer >= enemy.attackTime) stateMachine.SwitchState(enemy.enemyTrack);
     }
 }

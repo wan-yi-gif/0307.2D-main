@@ -16,6 +16,7 @@ namespace Wanyi
         public PlayerJump playerJump { get; private set; }
         public PlayerFall playerFall { get; private set; }
         public PlayerAttack playerAttack { get; private set; }
+        public PlayerDead playerDead { get; private set; }
 
         private void OnDrawGizmos()
         {
@@ -38,6 +39,8 @@ namespace Wanyi
             playerJump = new PlayerJump(this, stateMachine, "玩家跳躍");
             playerFall = new PlayerFall(this, stateMachine, "玩家落下");
             playerAttack = new PlayerAttack(this, stateMachine, "玩家攻擊");
+            playerDead = new PlayerDead(this, stateMachine, "玩家死亡");
+
 
             stateMachine.Initialize(playerIdle);
 
@@ -56,14 +59,15 @@ namespace Wanyi
             return Physics2D.OverlapBox(transform.position + checkGroundOffset, checkGroundSize, 0, LayerGround);
         }
 
-        internal void SetVelocity(float v, float linearVelocityY)
+        protected override void Damge(float damage)
         {
-            throw new NotImplementedException();
-        }
+            base.Damge(damage);
 
-        internal void SetVelocity(float v, object linearVelocityY)
+            if (hp <= 0) stateMachine.SwitchState(playerDead);
+        }
+        public void SetVelocity(float x, float y)
         {
-            throw new NotImplementedException();
+            rig.linearVelocity = new Vector2(x, y);
         }
 
         #region 變數
